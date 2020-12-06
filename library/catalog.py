@@ -1,23 +1,40 @@
 class Catalog:
     def __init__(self):
+        """
+        Initializes a catalog with empty library items.
+        """
         self.library_items = []
 
-    def search(self):
-        pass
+    def search(self, query):
+        """
+        Searches across all library items of the catalog for a given query.
+        """
+        print('Searching for {} in the catalog...'.format(query))
+        results = [item for item in self.library_items if item.match(query)]
+        return results
 
 
 class LibraryItem:
     """Represents any item in the library like a book, dvd, cd or a magazine."""
 
     def __init__(self, title=None, subject=None, upc=None):
-        pass
+        self.title = title
+        self.subject = subject
+        self.upc = upc
 
     def locate(self):
         print('child class should implement this method!!!')
 
+    def match(self, query):
+        """
+        Checks if the query is a part of a library item attributes. Returns a boolean
+        """
+        return query in (self.subject, self.title, self.upc)
+
 
 class Book(LibraryItem):
     def __init__(self, isbn, ddf):
+        super().__init__()
         self.isbn = isbn
         self.ddf = ddf
 

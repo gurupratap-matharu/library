@@ -5,22 +5,24 @@ class Menu:
     def __init__(self):
         self.choices = {
             "1": self.display_menu,
-            "2": self.exit,
+            "2": self.search,
+            "3": self.exit,
         }
 
     def display_menu(self):
         print("""
-    1. One hundred years of solitude
-    2. The alchemist
-            """)
+        1. One hundred years of solitude
+        2. The alchemist
+        """)
 
     def run(self):
         while True:
             print("""
-    Welcome to the library! You have the following options
-    1. Display Menu
-    2. Exit
-            """)
+        Welcome to the library! You have the following options
+        1. Display Menu
+        2. Search
+        3. Exit
+        """)
             choice = input('Enter your choice: ')
             action = self.choices.get(choice)
 
@@ -30,10 +32,11 @@ class Menu:
                 print("{} is not a valid choice.".format(choice))
 
     def exit(self):
-        print("""
-    Thank you for using the library application. Goodbye!
-    """)
+        print("""Thank you for using the library application. Goodbye!""")
         sys.exit(1)
+
+    def search(self):
+        print("Searching...")
 
 
 if __name__ == '__main__':

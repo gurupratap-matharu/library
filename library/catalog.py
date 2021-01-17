@@ -57,7 +57,7 @@ class DVD(LibraryItem):
         print(f'I am a dvd and you can find me on the dvd stand in the genre: {self.genre} section.')
 
     def __repr__(self):
-        return f'DVD: Genre:{self.genre}'
+        return f'DVD: {self.title} Genre:{self.genre}'
 
 
 class CD(LibraryItem):
@@ -69,7 +69,7 @@ class CD(LibraryItem):
         print(f'I am a CD - audio book and you can find me on the CD stand.')
 
     def __repr__(self):
-        return f'CD'
+        return f'CD: {self.title}'
 
 
 class Magazine(LibraryItem):

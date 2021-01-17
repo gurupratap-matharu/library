@@ -7,6 +7,9 @@ verify_ssl = true
 
 [packages]
 django = "*"
+factory-boy = "*"
+django-extensions = "*"
+werkzeug = "*"
 
 [requires]
 python_version = "3.9"

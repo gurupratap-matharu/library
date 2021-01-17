@@ -6,7 +6,7 @@ class Catalog(models.Model):
     name = models.CharField(max_length=60, blank=True)
 
     @classmethod
-    def search():
+    def search(query):
         print('searching in catalog...')
 
     def __str__(self):
@@ -47,16 +47,19 @@ class LibraryItem(models.Model):
     def locate(self):
         print(f'locating {self}...')
 
+    def match(self, query):
+        return query in (self.title, self.subject, self.upc)
+
     def __str__(self):
         return self.title
 
 
 class Book(LibraryItem):
-    isbn = models.PositiveIntegerField()
-    dds = models.PositiveIntegerField()
+    isbn = models.CharField(max_length=50)
+    dds = models.CharField(max_length=50)
 
     def __str__(self):
-        return f'Book: {self.title}: {self.isbn}'
+        return f'{self.title}\nISBN: {self.isbn}\nDDS: {self.dds}'
 
 
 class CD(LibraryItem):
@@ -68,12 +71,12 @@ class DVD(LibraryItem):
     genre = models.ManyToManyField(Genre)
 
     def __str__(self):
-        return f'DVD: {self.title}'
+        return f'DVD: {self.title} Genre: {self.genre}'
 
 
 class Magazine(LibraryItem):
-    volume = models.SmallIntegerField()
-    issue = models.SmallIntegerField()
+    volume = models.CharField(max_length=50)
+    issue = models.CharField(max_length=50)
 
     def __str__(self):
-        return f'Magazine: {self.volume}: {self.issue}'
+        return f'Magazine: Volume: {self.volume} Issue: {self.issue}'
